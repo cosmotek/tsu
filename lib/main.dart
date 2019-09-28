@@ -1,3 +1,4 @@
+import 'package:example_flutter/orgs/sqltable_structure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart'
@@ -74,6 +75,7 @@ class _AppState extends State<App>{
     shortcuts[LogicalKeyboardKey.keyS] = () => print("");
 
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100),
         child: AppBar(
@@ -105,7 +107,7 @@ class _AppState extends State<App>{
           backgroundColor: Colors.transparent,
         ),
       ),
-      body: SQLTable(config: conf, queryStr: "select * from people;"),
+      body: SQLTableStructure(config: conf, tableName: "people"),
     );
   }
 }
