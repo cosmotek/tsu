@@ -1,42 +1,55 @@
 import 'package:flutter/material.dart';
 
 Widget STable(List<Map<String, Map<String, dynamic>>> data) {
-  if (data == null) {
+  if (data == null || data.length == 0) {
     return Text("nothing was returned");
   }
 
-  var header = TableRow(
-    children: [
-      TableCell(
-        child: Container(
-          color: Colors.black,
-          child: Row(
-            children: data[0][data[0].keys.first].keys.map((v) => Text(v, style: TextStyle(color: Colors.white))).toList(),
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-          )
-        )
-      )
-    ]);
+  var fieldNames = <String>[...data[0][data[0].keys.first].keys];
+  var cols = fieldNames.map((field) {
+    var children = <Widget>[
+      Text(
+        "${field[0].toUpperCase()}${field.substring(1)}",
+        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        textAlign: TextAlign.left,
+      ),
+      ...data.map((rowData) {
+        var index = data.indexOf(rowData);
 
-  var rows = data.map((row) {
-    var rowValues = row[row.keys.first].values;
-    if (rowValues != null) {
-      return TableRow(
-        children: [
-          TableCell(
-            child: Row(
-              children: rowValues.map((val) => Text("$val")).toList(),
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-            ),
-          ),
-        ]);
+        return Text(
+          "${rowData[rowData.keys.first][field]}",
+          style: TextStyle(backgroundColor: index % 2 == 1 ? Colors.white : Colors.grey[200]),
+        );
+      }),
+    ];
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: children,
+    );
+  }).toList() as List<Widget>;
+
+  var fieldCols = <Widget>[];
+  cols.asMap().forEach((index, val) {
+    fieldCols.insert(fieldCols.length, val);
+    if (index != cols.length-1) {
+      fieldCols.insert(fieldCols.length, Container(color: Colors.black45, height: 50, width: 2));
     }
-
-    return [];
   });
 
-  return Table(
-    border: TableBorder.all(color: Colors.black, width: 1.0),
-    children: [header, ...rows.toList()],
+  return Column(
+    children: <Widget>[
+      Row(
+        children: <Widget>[
+          Chip(label: Text("view")),
+          Text("\"${data[0].keys.first}\"")
+        ],
+      ),
+      Divider(),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: fieldCols,
+      ),
+    ],
   );
 }

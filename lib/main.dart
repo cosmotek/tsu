@@ -62,7 +62,7 @@ class _AppState extends State<App>{
   void initState() {
     super.initState();
 
-    // shortcuts[LogicalKeyboardKey.keyS] = () => print("save... ${text}");
+    
     // LogicalKeyboardKey.enter: () => print("execute..."),
     // LogicalKeyboardKey.keyC: () => clippy.write('flutter clipboard value'),
     // LogicalKeyboardKey.keyV: () async => print(await clippy.read()),
@@ -71,6 +71,8 @@ class _AppState extends State<App>{
 
   @override
   Widget build(BuildContext context) {
+    shortcuts[LogicalKeyboardKey.keyS] = () => print("");
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100),
@@ -101,12 +103,9 @@ class _AppState extends State<App>{
           automaticallyImplyLeading: true,
           elevation: 0,
           backgroundColor: Colors.transparent,
-          actions: <Widget>[
-            
-          ],
         ),
       ),
-      body: ConnectionList(),
+      body: SQLTable(config: conf, queryStr: "select * from people;"),
     );
   }
 }
