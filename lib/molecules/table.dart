@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget STable(List<Map<String, Map<String, dynamic>>> data) {
+Widget STable({List<Map<String, Map<String, dynamic>>> data, String viewName, String viewType = "view"}) {
   if (data == null || data.length == 0) {
     return Text("nothing was returned");
   }
@@ -84,11 +84,11 @@ Widget STable(List<Map<String, Map<String, dynamic>>> data) {
                   padding: EdgeInsets.only(left: 4, right: 4, top: 2, bottom: 2),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    color: Color.fromRGBO(0, 155, 253, 1),
+                    color: viewType == "schema" ? Colors.red[300] : Color.fromRGBO(0, 155, 253, 1),
                   ),
-                  child: Text("view", style: TextStyle(color: Colors.white)),
+                  child: Text(viewType, style: TextStyle(color: Colors.white)),
                 ),
-                Text("\"${data[0].keys.first}\"")
+                Text("\"${viewName == "" ? data[0].keys.first : viewName}\"")
               ],
             ),
             Text(

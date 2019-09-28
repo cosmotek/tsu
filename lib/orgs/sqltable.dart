@@ -4,7 +4,7 @@ import 'package:postgres/postgres.dart';
 import './sqlcontext.dart';
 import '../molecules/table.dart';
 
-Widget SQLTable({@required SQLConfig config, @required String queryStr}) {
+Widget SQLTable({@required SQLConfig config, @required String queryStr, String viewName = "", String viewType = "view"}) {
   PostgreSQLConnection db = config.toPostgresConnection();
 
   Future tableQuery = db.open().then((_) {
@@ -26,7 +26,7 @@ Widget SQLTable({@required SQLConfig config, @required String queryStr}) {
               'Error: ${snapshot.error}',
               style: TextStyle(color: Colors.red),
             );
-          return STable(snapshot.data);
+          return STable(data: snapshot.data, viewName: viewName, viewType: viewType);
       }
 
       return null;

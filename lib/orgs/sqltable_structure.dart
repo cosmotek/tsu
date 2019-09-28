@@ -18,5 +18,5 @@ select
 from information_schema.columns where table_name = '$tableName';
 """;
 
-  return SQLTable(config: config, queryStr: tableQueryStr);
+  return SQLTable(config: config, queryStr: tableQueryStr, viewName: tableName, viewType: "schema");
 }
