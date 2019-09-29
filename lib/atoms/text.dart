@@ -7,7 +7,8 @@ Widget AText({@required String value}) {
       fontFamily: 'CoreSansC55',
       fontWeight: FontWeight.w600,
       fontSize: 64.0,
-      color: Color.fromRGBO(49, 210, 128, 1),
+      // color: Color.fromRGBO(49, 210, 128, 1),
+      color: Colors.black,
     )
   );
 }

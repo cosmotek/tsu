@@ -8,6 +8,7 @@ import 'package:clippy/server.dart' as clippy;
 
 import './atoms/text.dart';
 import './atoms/link.dart';
+import './atoms/input.dart';
 import './atoms/button.dart';
 import './orgs/desktop_app.dart';
 import './orgs/sqltable.dart';
@@ -31,9 +32,33 @@ class CustomDialog extends StatelessWidget {
       ),      
       elevation: 0.0,
       backgroundColor: Colors.transparent,
-      child: RaisedButton(
-        child: Text("hello"),
-        onPressed: () => Navigator.of(context).pop(),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(5),
+        ),
+        padding: EdgeInsets.all(20),
+        width: 500,
+        height: 500,
+        child: Column(
+          children: <Widget>[
+            Row(children: <Widget>[IconButton(
+              icon: Icon(Icons.close, size: 30),
+              onPressed: () => Navigator.of(context).pop(),
+            )]),
+            Input(placeholder: "Name", onChange: (v) => print(v)),
+            // Row(children: <Widget>[
+            //   Input(placeholder: "Host", onChange: (v) => print(v)),
+            //   Input(placeholder: "Port", onChange: (v) => print(v)),
+            // ]),
+            // Input(placeholder: "Database", onChange: (v) => print(v)),
+            // Row(children: <Widget>[
+            //   Input(placeholder: "Username", onChange: (v) => print(v)),
+            //   Input(placeholder: "Password", onChange: (v) => print(v)),
+            // ]),
+            Button(value: "Save", onTap: () => print("save")),
+          ],
+        ),
       ),
     );
   }
@@ -75,7 +100,7 @@ class _AppState extends State<App>{
     shortcuts[LogicalKeyboardKey.keyS] = () => print("");
 
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.lightBlue[50],
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100),
         child: AppBar(
