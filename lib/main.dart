@@ -10,6 +10,7 @@ import './atoms/text.dart';
 import './atoms/link.dart';
 import './atoms/input.dart';
 import './atoms/button.dart';
+import './molecules/map.dart';
 import './orgs/desktop_app.dart';
 import './orgs/sqltable.dart';
 import './orgs/sqlcontext.dart';
@@ -132,7 +133,13 @@ class _AppState extends State<App>{
           backgroundColor: Colors.transparent,
         ),
       ),
-      body: SQLTableStructure(config: conf, tableName: "people"),
+      body: ListView(
+        children: <Widget>[
+          SQLTableStructure(config: conf, tableName: "people"),
+          SQLTable(config: conf, queryStr: "select * from people"),
+          GeoMap(),
+        ],
+      ),
     );
   }
 }

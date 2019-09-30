@@ -15,6 +15,8 @@ dependencies:
   sembast: ^2.0.1+2
   path: ^1.6.4
   clippy: ^1.0.0
+  flutter_map: ^0.7.2
+  latlong: ^0.6.1
 
   flutter:
     sdk: flutter
