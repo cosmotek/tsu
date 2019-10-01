@@ -61,8 +61,9 @@ Widget GeoMap() {
                   layers: [
                     TileLayerOptions(
                       tileProvider: NetworkTileProvider(),
-                      urlTemplate: "https://api.mapbox.com/styles/v1/rucuriousyet/civr9jhaq005p2jm91r1q2j54/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicnVjdXJpb3VzeWV0IiwiYSI6ImNpdm83MjFwYzAxMnQyeXFyaDR0ZmFxbjkifQ.Ak3DcaxXheiKmTW2TIKY9A",
+                      // urlTemplate: "https://api.mapbox.com/styles/v1/rucuriousyet/civr9jhaq005p2jm91r1q2j54/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicnVjdXJpb3VzeWV0IiwiYSI6ImNpdm83MjFwYzAxMnQyeXFyaDR0ZmFxbjkifQ.Ak3DcaxXheiKmTW2TIKY9A",
                       // urlTemplate: "https://api.mapbox.com/styles/v1/rucuriousyet/ck15ozlow33tj1cph5cpt2y79/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicnVjdXJpb3VzeWV0IiwiYSI6ImNpdm83MjFwYzAxMnQyeXFyaDR0ZmFxbjkifQ.Ak3DcaxXheiKmTW2TIKY9A",
+                      urlTemplate: "https://api.mapbox.com/styles/v1/rucuriousyet/civr9jhaq005p2jm91r1q2j54/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicnVjdXJpb3VzeWV0IiwiYSI6ImNpdm83MjFwYzAxMnQyeXFyaDR0ZmFxbjkifQ.Ak3DcaxXheiKmTW2TIKY9A",
                     ),
                     MarkerLayerOptions(
                       markers: [
